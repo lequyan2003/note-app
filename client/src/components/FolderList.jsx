@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import NewFolder from './NewFolder.jsx';
 
+// eslint-disable-next-line react/prop-types
 export default function FolderList({ folders }) {
   const { folderId } = useParams();
   console.log({ folderId });
@@ -28,6 +29,7 @@ export default function FolderList({ folders }) {
         </Box>
       }
     >
+      {/* eslint-disable-next-line react/prop-types */}
       {folders.map(({ id, name }) => {
         return (
           <Link

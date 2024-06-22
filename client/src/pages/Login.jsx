@@ -1,14 +1,10 @@
 import { Button, Typography } from '@mui/material';
 import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthProvider.jsx';
 import { Navigate } from 'react-router-dom';
 import { graphQLRequest } from '../utils/request.js';
 
 export default function Login() {
   const auth = getAuth();
-  // const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
 
   const handleLoginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();

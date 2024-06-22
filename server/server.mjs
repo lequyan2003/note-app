@@ -5,7 +5,6 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import bodyParser from "body-parser";
 import { expressMiddleware } from "@apollo/server/express4";
 import cors from "cors";
-// import fakeData from "./fakeData/index.js";
 import { resolvers } from "./resolvers/index.js";
 import { typeDefs } from "./schemas/index.js";
 import mongoose from "mongoose";

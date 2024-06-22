@@ -9,6 +9,7 @@ import { foldersLoader } from '../utils/folderUtils.js';
 import { addNewNote, noteLoader, notesLoader, updateNote } from '../utils/noteUtils.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const AuthLayout = () => {
   return (
     <AuthProvider>
@@ -17,6 +18,7 @@ const AuthLayout = () => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default createBrowserRouter([
   {
     element: <AuthLayout />,

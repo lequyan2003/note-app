@@ -5,6 +5,7 @@ import { CircularProgress } from '@mui/material';
 
 export const AuthContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState({});
   const navigate = useNavigate();

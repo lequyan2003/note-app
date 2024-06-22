@@ -1,6 +1,5 @@
-// import fakeData from "../fakeData/index.js";
 import { AuthorModel, FolderModel, NoteModel } from '../models/index.js';
-import { GraphQLScalarType } from "graphql";
+import { GraphQLScalarType } from 'graphql';
 
 export const resolvers = {
     Date: new GraphQLScalarType({
@@ -10,10 +9,10 @@ export const resolvers = {
         },
         serialize(value) {
             return value.toISOString();
-        }
+        },
     }),
     Query: {
-        folders: async (parent, args, context) => { 
+        folders: async (parent, args, context) => {
             const folders = await FolderModel.find({
                 authorId: context.uid,
             }).sort({
@@ -21,41 +20,36 @@ export const resolvers = {
             });
             console.log({ folders, context });
             return folders;
-            // return fakeData.folders
         },
         folder: async (parent, args) => {
             const folderId = args.folderId;
             console.log({ folderId });
             const foundFolder = await FolderModel.findById(folderId);
             return foundFolder;
-            // return fakeData.folders.find(folder => folder.id === folderId);
         },
         note: async (parent, args) => {
             const noteId = args.noteId;
             const note = await NoteModel.findById(noteId);
             return note;
-            // return fakeData.notes.find(note => note.id === noteId);
         },
     },
     Folder: {
-        author: async (parent, args) => { 
+        author: async (parent, args) => {
             const authorId = parent.authorId;
             const author = await AuthorModel.findOne({
                 uid: authorId,
             });
             return author;
-            // return fakeData.authors.find(author => author.id === authorId);
         },
         notes: async (parent, args) => {
             console.log({ parent });
             const notes = await NoteModel.find({
                 folderId: parent.id,
-              }).sort({
+            }).sort({
                 updatedAt: 'desc',
-              });
-            console.log({notes});
+            });
+            console.log({ notes });
             return notes;
-            // return fakeData.notes.filter((note) => note.folderId === parent.id);
         },
     },
     Mutation: {
@@ -77,14 +71,15 @@ export const resolvers = {
         },
         register: async (parent, args) => {
             const foundUser = await AuthorModel.findOne({ uid: args.uid });
-
+  
             if (!foundUser) {
                 const newUser = new AuthorModel(args);
                 await newUser.save();
                 return newUser;
             }
-
+  
             return foundUser;
-        }
+        },
+
     },
 };

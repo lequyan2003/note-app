@@ -1,0 +1,6 @@
+components/FolderList.jsx, Note.jsx
+context/AuthProvider.jsx
+pages/Login.jsx
+router/ProtectedRoute.jsx, index.jsx
+utils/noteUtils.js
+
