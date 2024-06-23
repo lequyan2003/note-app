@@ -2,10 +2,13 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import FolderList from '../components/FolderList.jsx';
+import PushNotification from '../components/PushNotification.jsx';
 import UserMenu from '../components/UserMenu.jsx';
 
 export default function Home() {
   const { folders } = useLoaderData();
+
+  // console.log('[HomePage]',{data});
 
   return (
     <>
@@ -14,6 +17,7 @@ export default function Home() {
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'right', mb: '10px' }}>
         <UserMenu />
+        <PushNotification />
       </Box>
 
       <Grid
